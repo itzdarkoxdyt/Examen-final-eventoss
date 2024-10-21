@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('_participaciones', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('evento_id');
+            $table->unsignedBigInteger('organizador_id');
+            $table->foreign('organizador_id')->references('id')->on('_eventos')->onDelete('cascade');
+            $table->foreign('evento_id')->references('id')->on('_organizadores')->onDelete('cascade');
             $table->timestamps();
         });
     }

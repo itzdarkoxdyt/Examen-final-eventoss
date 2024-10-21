@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('_organizadores', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('email');
-            $table->int('telefono');
+            $table->string('email')->unique();
+            $table->integer('telefono');
             $table->timestamps();
         });
     }
